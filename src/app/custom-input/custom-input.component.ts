@@ -1,4 +1,4 @@
-import { Component, effect, forwardRef, input } from '@angular/core';
+import { Component,  forwardRef, input } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
@@ -18,20 +18,6 @@ export class CustomInputComponent implements ControlValueAccessor {
   onTouched = () => { };
 
   onchange = (_values: any) => { };
-
-  constructor() {
-    effect(() => {
-      const currentSignalValue = this.control().value;
-
-      if (this.control().dirty || this.control().touched) {
-        const newValue = this.control().value;
-
-        if (newValue != currentSignalValue) {
-          this.onchange(newValue)
-        }
-      }
-    })
-  }
 
   writeValue(value: any): void {
     if (value != this.control().value) {
