@@ -44,13 +44,7 @@ export class AppComponent {
     return value
   })
 
-  constructor() {
-    effect(() => {
-      this.form.controls.items.valueChanges.subscribe(() => {
-        this.items.set([...this.form.controls.items.controls])
-      })
-    })
-  }
+
 
   addItem() {
     const id = this.items().length + 1;
